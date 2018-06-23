@@ -43,20 +43,20 @@ console.log('list1\'s type is '+typeof(list1)+', value is '+list1+'.');
 let list2: Array<number> = [1, 2, 3]
 console.log('list2\'s type is '+typeof(list2)+', value is '+list2+'.');
 
-//Tuple
-console.log('Tuple type');
-// Declare a tuple type
-let x: [string, number];
-// Initialize it
-x = ['hello', 10]; // OK
-// Initialize it incorrectly
-//x = [10, 'hello']; // Error
-console.log(x[0].substr(1)); // OK
-//console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
-x[3] = 'world';
-console.log(typeof(x[5]))
-//console.log(x[5].toString());
-x[6] = true;
+// //Tuple
+// console.log('Tuple type');
+// // Declare a tuple type
+// let x: [string, number];
+// // Initialize it
+// x = ['hello', 10]; // OK
+// // Initialize it incorrectly
+// //x = [10, 'hello']; // Error
+// console.log(x[0].substr(1)); // OK
+// //console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
+// x[3] = 'world';
+// console.log(typeof(x[5]))
+// //console.log(x[5].toString());
+// x[6] = true;
 
 
 //enum
@@ -71,3 +71,61 @@ console.log(c);
 let colorName: string = Color[7];
 
 alert(colorName);  // 显示'Green'因为上面代码里它的值是2
+
+// Any
+console.log('Any Type');
+
+let notSure: any = 4;
+
+console.log('notSure\'s type is '+typeof(notSure)+', value is '+notSure+'.');
+
+notSure = 'maybe a string instead';
+
+console.log('notSure\'s type is '+typeof(notSure)+', value is '+notSure+'.');
+
+notSure = false;
+
+console.log('notSure\'s type is '+typeof(notSure)+', value is '+notSure+'.');
+notSure = 4;
+//notSure.ifItExists();//编译通过但是运行报错
+notSure.toFixed();
+
+// Void
+console.log('Void Type');
+let voidVar: void=undefined;
+console.log('voidVar\'s type is '+typeof(voidVar)+', value is '+voidVar+'.');
+let voidVar1: void=null;
+console.log('voidVar1\'s type is '+typeof(voidVar1)+', value is '+voidVar1+'.');
+
+function warnUser(): void{
+    alert('This is a Void Function');
+}
+warnUser();
+
+//Null和Undefined
+console.log('Null Undefined Type');
+let u: undefined = undefined;
+console.log('u\'s type is '+typeof(u)+', value is '+u+'.');
+let n: null = null;
+console.log('n\'s type is '+typeof(n)+', value is '+n+'.');
+
+//Never
+console.log('Never Type');
+// 返回never的函数必须存在无法达到的终点
+function error(message: string): never {
+    throw new Error(message);
+}
+error('111');
+
+// 推断的返回值类型为never
+function fail() {
+    return error("Something failed");
+}
+fail();
+
+// 返回never的函数必须存在无法达到的终点
+function infiniteLoop(): never {
+    while (true) {
+    }
+}
+infiniteLoop();
